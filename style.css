@@ -5,7 +5,7 @@ body {
     font-size: 16px;
 }
 
-h1, h2, p, ul, li, blockquote {
+h1, h2, h3, p, ul, li, blockquote {
     margin: 0;
 }
 
@@ -132,4 +132,31 @@ h1, h2, p, ul, li, blockquote {
 .quotebox p {
     text-align: right;
     font-weight: bold;
+}
+
+/* CTA SECTION */
+
+.ctabox {
+    margin: 10px 10%;
+}
+
+.ctainnercontainer {
+    background-color: #3882F6;
+    color: #E5E7EB;
+    margin: 65px 0;
+    border-radius: 5px;
+    padding: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 45px
+}
+
+.signuptwo {
+    background-color: #3882F6;
+    color: #E5E7EB;
+    border: 1px solid #E5E7EB;
+    padding: 5px 10px;
+    border-radius: 10px;
 }
