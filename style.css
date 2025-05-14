@@ -80,3 +80,37 @@ h1, h2, p, ul, li {
     justify-content: center;
     align-items: center;
 }
+  
+/* MAIN SECTION */
+
+.mainbox {
+    margin: 10px 10%;
+}
+
+.mainbox h2 {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 36px;
+    color: #1F2937;
+    font-weight: 900;
+}
+
+.highlightimageph {
+    width: 75px;
+    height: 75px;
+    border: 2px solid blue;
+    border-radius: 10px;
+}
+
+.highlightrow {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.highlightbox {
+    width: 125px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
