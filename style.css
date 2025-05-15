@@ -43,6 +43,16 @@ h1, h2, h3, p, ul, li, blockquote {
 
 .headernav ul li {
     display: inline;
+    font-weight: 100;
+}
+
+.headernav ul li a {
+    color: #E5E7EB;
+    text-decoration: none;
+}
+
+.headernav ul li a:hover {
+    color: lightgray;
 }
 
 /* header main section */
@@ -52,6 +62,7 @@ h1, h2, h3, p, ul, li, blockquote {
     justify-content: space-between;
     align-items: center;
     margin: 75px 10% 100px 10%;
+    gap: 40px;
 }
 
 .headermaintext h1 {
@@ -73,12 +84,14 @@ h1, h2, h3, p, ul, li, blockquote {
 }
 
 .headermainimage {
-    background-color: grey;
     flex-basis: 100%;
-    height: 175px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+}
+
+.headermainimage img {
+    border: 2px solid #E5E7EB;
+    border-radius: 5px;
 }
   
 /* MAIN SECTION */
@@ -95,12 +108,12 @@ h1, h2, h3, p, ul, li, blockquote {
     font-weight: 900;
 }
 
-.highlightimageph {
+/* .highlightimageph {
     width: 75px;
     height: 75px;
     border: 2px solid blue;
     border-radius: 10px;
-}
+} */
 
 .highlightrow {
     display: flex;
@@ -108,11 +121,28 @@ h1, h2, h3, p, ul, li, blockquote {
     gap: 25px;
 }
 
+.highlightrow a {
+    text-decoration: none;
+    color: black;
+}
+
+.highlightrow a:hover {
+    color: grey;
+}
+
 .highlightbox {
     width: 125px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.highlightimage img {
+    border-radius: 5px;
+}
+
+.highlightbox p {
+    text-align: center;
 }
 
 /* QUOTE SECTION */
