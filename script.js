@@ -1,3 +1,32 @@
+const test = document.querySelector(".testdiv");
+
+const par = document.createElement('p');
+par.textContent = `Hey, I'm red!`;
+par.style.color = 'red';
+
+const heading = document.createElement('h3');
+heading.textContent = `I'm a blue h3!`;
+heading.style.color = 'blue';
+
+const div = document.createElement('div');
+div.style.border = '1px solid black';
+div.style.backgroundColor = 'pink';
+
+const headingLrg = document.createElement('h1');
+headingLrg.textContent = `I'm in a div`;
+
+const divPar = document.createElement('p');
+divPar.textContent = `ME TOO!`;
+
+div.appendChild(headingLrg);
+div.appendChild(divPar);
+
+test.appendChild(par);
+test.appendChild(heading);
+test.appendChild(div);
+
+console.log(test);
+
 // The Hidden Console Game of Rock, Paper, Scissors
 
 function getComputerChoice() {
@@ -71,45 +100,16 @@ function playGame() {
     let computerScore = 0;
     let roundWinner;
 
-    // Round 1
-    roundWinner = playRound(getHumanChoice(), getComputerChoice());
-    if (roundWinner === 'human') {
-        humanScore++;
-    } else if (roundWinner === 'computer') {
-        computerScore++;
+    // Loop to Play 5 Rounds
+    for (let i = 1; i < 6; i++) {
+        roundWinner = playRound(getHumanChoice(), getComputerChoice());
+        if (roundWinner === 'human') {
+            humanScore++;
+        } else if (roundWinner === 'computer') {
+            computerScore++;
+        }
     }
 
-    // Round 2
-    roundWinner = playRound(getHumanChoice(), getComputerChoice());
-    if (roundWinner === 'human') {
-        humanScore++;
-    } else if (roundWinner === 'computer') {
-        computerScore++;
-    }
-
-    // Round 3
-    roundWinner = playRound(getHumanChoice(), getComputerChoice());
-    if (roundWinner === 'human') {
-        humanScore++;
-    } else if (roundWinner === 'computer') {
-        computerScore++;
-    }
-
-    // Round 4
-    roundWinner = playRound(getHumanChoice(), getComputerChoice());
-    if (roundWinner === 'human') {
-        humanScore++;
-    } else if (roundWinner === 'computer') {
-        computerScore++;
-    }
-
-    // Round 5
-    roundWinner = playRound(getHumanChoice(), getComputerChoice());
-    if (roundWinner === 'human') {
-        humanScore++;
-    } else if (roundWinner === 'computer') {
-        computerScore++;
-    }
 
     // Declare Winner
     if (humanScore > computerScore) {
@@ -119,6 +119,5 @@ function playGame() {
     } else {
         console.log(`It looks like a tie after 5 rounds - you and the computer both scored ${humanScore}.`);
     }
-    
 
 }
