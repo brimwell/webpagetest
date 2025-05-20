@@ -1,31 +1,30 @@
-const test = document.querySelector(".testdiv");
+const list = document.querySelector('#shoppinglist');
+const input = document.querySelector('input');
+const btn = document.querySelector('button');
 
-const par = document.createElement('p');
-par.textContent = `Hey, I'm red!`;
-par.style.color = 'red';
 
-const heading = document.createElement('h3');
-heading.textContent = `I'm a blue h3!`;
-heading.style.color = 'blue';
+btn.addEventListener('click', () => {
+    let item = input.value;
+    input.value = '';
 
-const div = document.createElement('div');
-div.style.border = '1px solid black';
-div.style.backgroundColor = 'pink';
+    const listItem = document.createElement('li');
+    const span = document.createElement('span');
+    const newButton = document.createElement('button');
 
-const headingLrg = document.createElement('h1');
-headingLrg.textContent = `I'm in a div`;
+    listItem.appendChild(span);
+    listItem.appendChild(newButton);
+    span.textContent = item;
+    newButton.textContent = 'Delete';
 
-const divPar = document.createElement('p');
-divPar.textContent = `ME TOO!`;
+    list.appendChild(listItem);
 
-div.appendChild(headingLrg);
-div.appendChild(divPar);
+    newButton.addEventListener('click', () => {
+        listItem.remove();
+    });
 
-test.appendChild(par);
-test.appendChild(heading);
-test.appendChild(div);
+    input.focus();
+});
 
-console.log(test);
 
 // The Hidden Console Game of Rock, Paper, Scissors
 

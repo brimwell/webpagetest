@@ -200,3 +200,13 @@ h1, h2, h3, p, ul, li, blockquote {
     text-align: center;
     font-weight: 200;
 }
+
+#shoppinglist li {
+    margin-bottom: 10px;
+}
+
+#shoppinglist li button {
+    font-size: 12px;
+    margin-left: 20px;
+    color: #666;
+}
