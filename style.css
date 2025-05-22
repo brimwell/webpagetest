@@ -201,12 +201,24 @@ h1, h2, h3, p, ul, li, blockquote {
     font-weight: 200;
 }
 
-#shoppinglist li {
-    margin-bottom: 10px;
+
+/* RPS Game Styling */
+
+.activebutton {
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: black;
+    background-color: lightblue;
 }
 
-#shoppinglist li button {
-    font-size: 12px;
-    margin-left: 20px;
-    color: #666;
+.activebutton:hover {
+    color: grey;
+}
+
+.inactivebutton {
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 1px solid grey;
+    background-color: grey;
+    color: black;
 }

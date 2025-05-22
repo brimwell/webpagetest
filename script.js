@@ -16,13 +16,8 @@ function getComputerChoice() {
 
     return compChoice;
 }
-//  Don't need if I have buttons in DOM
-// function getHumanChoice() {
-//     let humChoice = (prompt('Choose rock, paper, or scissors')).toLowerCase();
-    
-//     return humChoice;
-// }
 
+const startGameBtn = document.querySelector('#startgame');
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
@@ -32,21 +27,52 @@ const humanScoreDisplay = document.querySelector('#humanscore');
 const computerScoreDisplay = document.querySelector('#computerscore');
 const declareWinner = document.createElement('p');
 
-rock.addEventListener('click', () => {
-    playRound('rock', getComputerChoice());
-});
-paper.addEventListener('click', () => {
-    playRound('paper', getComputerChoice());
-});
-scissors.addEventListener('click', () => {
-    playRound('scissors', getComputerChoice());
-});
 
 let humanScore = 0;
 let computerScore = 0;
 
 humanScoreDisplay.textContent = humanScore;
 computerScoreDisplay.textContent = computerScore;
+
+let rockCall = function() {
+    playRound('rock', getComputerChoice());
+};
+let paperCall = function() {
+    playRound('paper', getComputerChoice());
+};
+let scissorsCall = function() {
+    playRound('scissors', getComputerChoice());
+};
+
+let enabled = true;
+
+startGameBtn.addEventListener('click', () => {
+    if (enabled) {
+        // Reset all scoring and text
+        humanScore = 0;
+        computerScore = 0;
+        humanScoreDisplay.textContent = humanScore;
+        computerScoreDisplay.textContent = computerScore;
+        declareWinner.textContent = '';
+        resultsText.textContent = '';
+
+        //Activate Selection Buttons
+        rock.addEventListener('click', rockCall);
+        paper.addEventListener('click', paperCall);
+        scissors.addEventListener('click', scissorsCall);
+
+        //Change styling of buttons to indicate active
+        startGameBtn.removeAttribute('class', 'activebutton');
+        startGameBtn.classList.add('inactivebutton');
+        rock.removeAttribute('class', 'inactivebutton');
+        rock.classList.add('activebutton');
+        paper.removeAttribute('class', 'inactivebutton');
+        paper.classList.add('activebutton');
+        scissors.removeAttribute('class', 'inactivebutton');
+        scissors.classList.add('activebutton');
+        enabled = false;
+    }
+})
 
 
 
@@ -60,9 +86,7 @@ function playRound(humanChoice, computerChoice) {
         } else if (computerChoice === 'scissors') {
             resultsText.textContent = `You win, ${humanChoice} beats ${computerChoice}.`;
             humanScore++;
-        } else {
-            resultsText.textContent = `Hmmm, there seems to be something wrong.`;
-        }
+        } 
     } else if (humanChoice === 'paper') {
         if (computerChoice === 'rock') {
             resultsText.textContent = `You win, ${humanChoice} beats ${computerChoice}.`;
@@ -72,9 +96,7 @@ function playRound(humanChoice, computerChoice) {
         } else if (computerChoice === 'scissors') {
             resultsText.textContent = `You lose, ${computerChoice} beats ${humanChoice}.`;
             computerScore++;
-        } else {
-            resultsText.textContent = `Hmmm, there seems to be something wrong.`;
-        }
+        } 
     } else if (humanChoice === 'scissors') {
         if (computerChoice === 'rock') {
             resultsText.textContent = `You lose, ${computerChoice} beats ${humanChoice}.`;
@@ -84,48 +106,39 @@ function playRound(humanChoice, computerChoice) {
             humanScore++;
         } else if (computerChoice === 'scissors') {
             resultsText.textContent = `It's a tie! You both chose ${humanChoice}.`;
-        } else {
-            resultsText.textContent = `Hmmm, there seems to be something wrong.`;
         }
-    } else {
-        resultsText.textContent = `Hmmm, there seems to be an issue with your choice.`;
-    }
+    } 
 
     humanScoreDisplay.textContent = humanScore;
     computerScoreDisplay.textContent = computerScore;
 
-    if (humanScore === 5) {
-        declareWinner.textContent = `You win the game with a score of ${humanScore} over the computer's score of ${computerScore}. Congratulations!`;
-        resultsBox.appendChild(declareWinner);
-    } else if (computerScore === 5) {
-         declareWinner.textContent = `The computer wins the game with a score of ${computerScore} over your score of ${humanScore}. Better luck next time!`;
-        resultsBox.appendChild(declareWinner);
-    }
-}
 
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
-    let roundWinner;
-
-    // Loop to Play 5 Rounds
-    for (let i = 1; i < 6; i++) {
-        roundWinner = playRound(getHumanChoice(), getComputerChoice());
-        if (roundWinner === 'human') {
-            humanScore++;
-        } else if (roundWinner === 'computer') {
-            computerScore++;
+    if (humanScore === 5 || computerScore === 5) {
+        if (humanScore === 5) {
+            declareWinner.textContent = `You win the game with a score of ${humanScore} over the computer's score of ${computerScore}. Congratulations!`;
+        } else if (computerScore === 5) {
+            declareWinner.textContent = `The computer wins the game with a score of ${computerScore} over your score of ${humanScore}. Better luck next time!`;
         }
-    }
 
+        resultsBox.appendChild(declareWinner);
+        rock.removeEventListener('click', rockCall);
+        paper.removeEventListener('click', paperCall);
+        scissors.removeEventListener('click', scissorsCall);
 
-    // Declare Winner
-    if (humanScore > computerScore) {
-        console.log(`You win! Your score was ${humanScore} and the computer scored only ${computerScore}.`);
-    } else if (humanScore < computerScore) {
-        console.log(`You lose... The computer scored ${computerScore} and you only scored ${humanScore}`);
-    } else {
-        console.log(`It looks like a tie after 5 rounds - you and the computer both scored ${humanScore}.`);
+        //Change styling of buttons to indicate active
+        startGameBtn.removeAttribute('class', 'inactivebutton');
+        startGameBtn.classList.add('activebutton');
+        rock.removeAttribute('class', 'activebutton');
+        rock.classList.add('inactivebutton');
+        paper.removeAttribute('class', 'activebutton');
+        paper.classList.add('inactivebutton');
+        scissors.removeAttribute('class', 'activebutton');
+        scissors.classList.add('inactivebutton');
+        enabled = true;
+
     }
 
 }
+
+
+
