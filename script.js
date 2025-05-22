@@ -1,4 +1,6 @@
-
+//NEXT STEPS
+// Work on styling of page. 
+// Clean up code where possible? Ex. do i need inactive and active or just one?
 
 // The Game of Rock, Paper, Scissors
 
@@ -115,9 +117,9 @@ function playRound(humanChoice, computerChoice) {
 
     if (humanScore === 5 || computerScore === 5) {
         if (humanScore === 5) {
-            declareWinner.textContent = `You win the game with a score of ${humanScore} over the computer's score of ${computerScore}. Congratulations!`;
+            declareWinner.textContent = `You win the game with a score of ${humanScore} over the computer's score of ${computerScore}.\n Congratulations!`;
         } else if (computerScore === 5) {
-            declareWinner.textContent = `The computer wins the game with a score of ${computerScore} over your score of ${humanScore}. Better luck next time!`;
+            declareWinner.textContent = `The computer wins the game with a score of ${computerScore} over your score of ${humanScore}.\n Better luck next time!`;
         }
 
         resultsBox.appendChild(declareWinner);

@@ -222,3 +222,55 @@ h1, h2, h3, p, ul, li, blockquote {
     background-color: grey;
     color: black;
 }
+
+.titlebox {
+    text-align: center;
+    padding: 40px 0;
+}
+
+#startgame {
+    font-size: 32px;
+    margin: 0 auto;
+}
+
+.buttoncontainer {
+    display: flex;
+    justify-content: center;
+}
+
+.scorebox {
+    margin: 50px 0;
+}
+
+.scorebox h3 {
+    text-align: center;
+}
+
+.scoredisplay {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.playbox {
+    text-align: center;
+}
+
+.playbox p {
+    margin-bottom: 20px;
+}
+
+#choices {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+#resultsbox {
+    margin: 25px 0;
+}
+
+.footer a {
+    text-decoration: none;
+    color: lightgray;
+}
