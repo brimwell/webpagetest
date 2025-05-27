@@ -1,6 +1,9 @@
 //NEXT STEPS
-// Work on styling of page. 
-// Clean up code where possible? Ex. do i need inactive and active or just one?
+// Make footer sticky
+// Think about styling of this page
+// Clean up code where possible?
+// How do I deal with Javascript that executes on page load on the other page? Feels like I should have a separate js page for just the game page
+//Think about styling in conjunction with all pages, this is where we get into themes etc.
 
 // The Game of Rock, Paper, Scissors
 
@@ -117,9 +120,9 @@ function playRound(humanChoice, computerChoice) {
 
     if (humanScore === 5 || computerScore === 5) {
         if (humanScore === 5) {
-            declareWinner.textContent = `You win the game with a score of ${humanScore} over the computer's score of ${computerScore}.\n Congratulations!`;
+            declareWinner.textContent = `You win the game with a score of ${humanScore} over the computer's score of ${computerScore}. Congratulations!`;
         } else if (computerScore === 5) {
-            declareWinner.textContent = `The computer wins the game with a score of ${computerScore} over your score of ${humanScore}.\n Better luck next time!`;
+            declareWinner.textContent = `The computer wins the game with a score of ${computerScore} over your score of ${humanScore}. Better luck next time!`;
         }
 
         resultsBox.appendChild(declareWinner);

@@ -274,3 +274,28 @@ h1, h2, h3, p, ul, li, blockquote {
     text-decoration: none;
     color: lightgray;
 }
+
+/* ETCH PROJECT */
+
+#etchheader h1 {
+    text-align: center;
+}
+
+#etchgrid {
+    width: 435px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.etchgridbox {
+    height: 25px;
+    width: 25px;
+    border: 1px solid black;
+
+}
+
+.etchgridbox:hover {
+    background-color: black;
+}
