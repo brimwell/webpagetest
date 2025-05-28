@@ -5,7 +5,6 @@ const etchHeader = document.querySelector('#etchheader');
 const etchGrid = document.querySelector('#etchgrid');
 const gridNumber = document.querySelector('#gridnumber');
 const gridBtn = document.querySelector('#getgridnumber');
-let currentOpacity = 0;
 
 for (let i = 1; i < 257; i++) {
     let gridBox = document.createElement('div');
@@ -16,13 +15,10 @@ for (let i = 1; i < 257; i++) {
     
     etchGrid.appendChild(gridBox);
 
-    currentOpacity += 0.1;
-    console.log(currentOpacity);
    
-    gridBox.addEventListener('mouseover', () => {
-    gridBox.style.backgroundColor = 'black';
-    gridBox.style.opacity = currentOpacity;
-    })
+    gridBox.addEventListener('mouseover', () => { 
+            gridBox.style.backgroundColor = 'black';
+        })
 }
 
 let warning = document.createElement('p');
@@ -61,8 +57,8 @@ gridBtn.addEventListener('click', () => {
         etchGrid.appendChild(gridBox);
         gridNumber.value = '';
 
-        gridBox.addEventListener('mouseover', () => {
-        gridBox.style.backgroundColor = 'black';
+        gridBox.addEventListener('mouseover', () => { 
+            gridBox.style.backgroundColor = 'black';
         })
     }
 })
@@ -76,3 +72,15 @@ gridBtn.addEventListener('click', () => {
     // console.log(rgb);
 // Then change the backgroundColor at end of loop to rgb from the color
 
+// To add a darkening effect every time you go over a square in the grid:
+// Change gridBox event Listener to the following
+    // gridBox.addEventListener('mouseover', () => {
+    //     if (gridBox.style.backgroundColor === 'black') {
+    //         let currentOpacity = +gridBox.style.opacity;
+    //         currentOpacity += 0.1;
+    //         gridBox.style.opacity = currentOpacity;
+    //     } else { 
+    //         gridBox.style.backgroundColor = 'black';
+    //         gridBox.style.opacity = 0.1;
+    //     }
+    //     })
