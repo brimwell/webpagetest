@@ -14,7 +14,7 @@ function divide(a, b) {
     return a / b;
 };
 
-// (result = numOne, numTwo cleared, display shows result)
+
 let result;
 function calculate (a, b, op) {
     switch(op) {
@@ -22,28 +22,43 @@ function calculate (a, b, op) {
             result = add(a,b);
             numOne = result;
             numTwo = undefined;
-            calcDisplay.textContent = +result;
+            displayNum(+result);
             break;
         case 'subtract':
             result = subtract(a,b);
             numOne = result;
             numTwo = undefined;
-            calcDisplay.textContent = +result;
+            displayNum(+result);
             break;
         case 'multiply':
             result = multiply(a,b);
             numOne = result;
             numTwo = undefined;
-            calcDisplay.textContent = +result;
+            displayNum(+result);
             break;
         case 'divide':
+            if (b === 0) {
+                displayWarning();
+                calcDisplay.textContent = `Can't divide by 0`;
+                return;
+            }
             result = divide(a,b);
             numOne = result;
             numTwo = undefined;
-            calcDisplay.textContent = +result;
+            displayNum(+result);
             break;
     }
 };
+
+
+function displayNum(item) {
+    if(item.toString().includes('.')) {
+        let newItem = parseFloat(item.toFixed(8));
+        calcDisplay.textContent = +newItem;
+    } else {
+        calcDisplay.textContent = +item;
+    }
+}
 
 let numOne;
 let numTwo;
@@ -55,89 +70,178 @@ const numberBtns = document.querySelectorAll('.numberbtn');
 const operatorBtns = document.querySelectorAll('.operatorbtn');
 const equalsBtn = document.querySelector('#equals');
 const clearBtn = document.querySelector('#clearbtn');
+const decimalBtn = document.querySelector('.decimalbtn');
+const backSpaceBtn = document.querySelector('.backspacebtn');
 
-function displayNum(num) {
-    if (clearDisplayToggle) {
-        calcDisplay.textContent = num;
-        clearDisplayToggle = false;
-    } else {
-        calcDisplay.textContent = calcDisplay.textContent + num;
+document.addEventListener('keydown', function (event) {
+    switch(event.key) {
+        case 'Backspace':
+            backSpaceAction();
+            break;
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+        case '0':
+            numberBtnAction(event);
+            break;
+        case '.':
+            decimalBtnAction();
+            break;
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+            operatorBtnAction(event);
+            break;
+        case 'Enter':
+        case '=':
+            equalsBtnAction();
+            break;
+        case 'Escape':
+            clearBtnAction();
+            break;
+        default: 
+            break;
     }
-}
-
-numberBtns.forEach(item => {
-    item.addEventListener('click', function(){
-        if (+calcDisplay.textContent === 0 || lastButtonPressed === 'operator') {
-            calcDisplay.textContent = +item.id;
-            console.log('display is 0 or lbp is operator')
-        } else if (lastButtonPressed === 'number' && +calcDisplay.textContent !== 0) {
-            calcDisplay.textContent = calcDisplay.textContent + +item.id;
-            console.log('lbp is number and display is not 0')
-        } else if (lastButtonPressed === 'equals') {
-            console.log('Warning');
-            return;
-        } else {
-            console.log(`I didn't plan for this`)
-        }
-        lastButtonPressed = 'number';
-    })
 });
 
-operatorBtns.forEach(item => {
-    item.addEventListener('click', function() {
-        if (lastButtonPressed === 'number' && !numOne && !operator ||
+function backSpaceAction () {
+    if (calcDisplay.textContent === '0') {
+        return;
+    } else if (lastButtonPressed === 'number') {
+        calcDisplay.textContent = calcDisplay.textContent.substring(0, calcDisplay.textContent.length - 1);
+
+        if (calcDisplay.textContent === '') {
+            calcDisplay.textContent = 0;
+        }
+    } else {
+        return;
+    }
+};
+
+function numberBtnAction (event) {
+    let potentialContent;
+    if (event.type === 'click') {
+        potentialContent = event.target.id;
+    } else {
+        potentialContent = event.key;
+    }
+
+    if (calcDisplay.textContent === '0.') {
+            calcDisplay.textContent = calcDisplay.textContent + +potentialContent;
+        } else if (+calcDisplay.textContent === 0 || lastButtonPressed === 'operator') {
+            calcDisplay.textContent = +potentialContent;
+        } else if (lastButtonPressed === 'number' && +calcDisplay.textContent !== 0 && calcDisplay.textContent.length < 11) {
+            calcDisplay.textContent = calcDisplay.textContent + +potentialContent;
+        } else if (lastButtonPressed === 'number' && +calcDisplay.textContent !== 0 && calcDisplay.textContent.length > 10) {
+            displayWarning();
+        } else if (lastButtonPressed === 'equals') {
+            displayWarning();
+            return;
+        } 
+        lastButtonPressed = 'number';
+}
+
+function decimalBtnAction() {
+    if (lastButtonPressed === 'equals' || (lastButtonPressed === 'number' && calcDisplay.textContent.toString().includes('.'))) {
+        return;
+    } else if (+calcDisplay.textContent === 0 || lastButtonPressed === 'operator') {
+        calcDisplay.textContent = 0 + '.';
+     } else {
+        calcDisplay.textContent = calcDisplay.textContent + '.';
+     }
+     lastButtonPressed = 'number';
+};
+
+function operatorBtnAction(event) {
+    let newOperator;
+    if (event.type === 'click') {
+        newOperator = event.target.id;
+    } else if (event.key === '+') {
+        newOperator = 'add';        
+    } else if (event.key === '-') {
+        newOperator = 'subtract';
+    } else if (event.key === '*') {
+        newOperator = 'multiply';
+    } else if (event.key === '/') {
+        newOperator = 'divide';
+    }
+
+    if (lastButtonPressed === 'number' && !numOne && !operator ||
             lastButtonPressed === 'equals') {
                 numOne = +calcDisplay.textContent;
-                operator = item.id;
-                console.log(`either lbp is number and numOne and operator are undefined OR lbp is equals`);
+                operator = newOperator;
         } else if (lastButtonPressed === 'number' && numOne && operator) {
             numTwo = +calcDisplay.textContent;
             calculate(numOne, numTwo, operator);
-            operator = item.id;
-            console.log(`lbp is number and numOne and op are filled`);
+            operator = newOperator;
         } else if (lastButtonPressed === 'operator') {
-            operator = item.id;
-            console.log(`lbp was operator`)
+            operator = newOperator;
         } else if (!lastButtonPressed) {
-            console.log('Warning');
+            displayWarning();
             return;
         }
 
         lastButtonPressed = 'operator';
-    })
-});
+}
 
-equalsBtn.addEventListener('click', function() {
+function equalsBtnAction() {
     if (lastButtonPressed === 'operator' || (!numOne && !operator)) {
-        console.log(`Warning`)
+        displayWarning();
         return;
     } else if (lastButtonPressed === 'number' && numOne && operator) {
         numTwo = +calcDisplay.textContent;
         calculate(numOne, numTwo, operator);
         operator = undefined;
-        console.log(`normal equal press`);
     } else if (lastButtonPressed === 'equals') {
-        console.log(`Warning same equal pressed`);
-    } else {
-        console.log(`Something I haven't planned for `);
-    }
+        displayWarning();
+    } 
 
     lastButtonPressed = 'equals';
-});
+}
 
-clearBtn.addEventListener('click', function() {
+function clearBtnAction() {
     calcDisplay.textContent = 0;
     numOne = undefined;
     numTwo = undefined;
     operator = undefined;
     lastButtonPressed = undefined;
-})
+}
 
-/*4
+backSpaceBtn.addEventListener('click', backSpaceAction);
+numberBtns.forEach(item => {
+    item.addEventListener('click', numberBtnAction);
+});
+decimalBtn.addEventListener('click', decimalBtnAction);
+operatorBtns.forEach(item => {
+    item.addEventListener('click', operatorBtnAction);
+});
+equalsBtn.addEventListener('click', equalsBtnAction);
 
-TO DO: 
-OK, I think the logic is good now.  the addition of lbp is probably a good one
-So next:
+clearBtn.addEventListener('click', clearBtnAction);
+
+function displayWarning() {
+    calcDisplay.style.border = '3px solid red';
+    function backToOriginal() {
+        calcDisplay.style.border = '1px solid black';
+    }
+    setTimeout(backToOriginal, 3000);
+};
+
+
+/*
+
+For Keyboard Support:
+    As I understand currently: addeventlistener with a switch case to isolate numbers, operators, and backspace/delete
+    for all eventllisteners currently there - change them to named functions, so that I can call them depending on the keyboard pressed as well as if the button on screen is clicked
+
+
 
 Limit on Display Number? - 
     including decimals and rounding
@@ -146,5 +250,6 @@ Warning symbol?
 Clean up calculate function? Or with simplifying numbers?
 Clean up Visuals a bit? 
 Am I using all class and ids that i need to?
+
 
 */
