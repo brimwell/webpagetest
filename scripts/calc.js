@@ -235,21 +235,3 @@ function displayWarning() {
 };
 
 
-/*
-
-For Keyboard Support:
-    As I understand currently: addeventlistener with a switch case to isolate numbers, operators, and backspace/delete
-    for all eventllisteners currently there - change them to named functions, so that I can call them depending on the keyboard pressed as well as if the button on screen is clicked
-
-
-
-Limit on Display Number? - 
-    including decimals and rounding
-Some indication of a button press
-Warning symbol?
-Clean up calculate function? Or with simplifying numbers?
-Clean up Visuals a bit? 
-Am I using all class and ids that i need to?
-
-
-*/
