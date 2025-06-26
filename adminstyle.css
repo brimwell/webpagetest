@@ -1,0 +1,269 @@
+* {
+    box-sizing: border-box;
+    font-family: Roboto, Arial, serif;
+}
+
+body {
+     margin: 0;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, p, ul, li, blockquote {
+    margin: 0;
+}
+
+/* OVERALL STYLING */
+
+.container {
+    display: grid;
+    grid-template-columns: minmax(255px, 1fr) 4fr;
+    grid-template-rows: 1fr 4fr;
+    height: 100vh;
+}
+
+.sidebar {
+    grid-row: 1 / 3;
+    background-color: #1992D4;
+    color: white;
+
+
+    display: grid;
+    grid-auto-rows: min-content;
+    gap: 45px;
+    padding: 15px;
+    padding-left: 30px;
+}
+
+.sidebar ul {
+    display: grid;
+    gap: 1rem;
+    padding-left: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+.header {
+    background-color: white;
+
+    display: grid;
+    grid-template-rows: min-content 1fr;
+
+    z-index: 1;
+    box-shadow: 0px 3px 10px lightgray;
+}
+
+.headertop {
+    display: grid;
+    grid-template-columns: 3fr min-content min-content max-content;
+    gap: 30px;
+    padding: 20px 20px 10px 20px;
+    align-items: center;
+}
+
+.profilepic {
+    border: 1px solid lightgray;
+    border-radius: 50%;
+}
+
+.headertop p {
+    font-weight: bold;
+}
+
+
+.headerbottom {
+    padding: 13px 20px 20px 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.headerintro {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+.smaller {
+    font-size: 0.8em;
+}
+
+.callname {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: repeat(3, min-content);
+    gap: 30px;
+
+    justify-content: right;
+    
+}
+
+.actions button {
+    background-color: #1992D4;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 25px;
+}
+
+.name {
+    justify-self: right;
+}
+
+.main {
+    background-color: #E2E8F0;
+
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.projects {
+    grid-row: 1 / 3;
+
+    padding: 20px;
+
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    gap: 10px;
+}
+
+.announcements, .trending {
+
+    padding: 20px;
+
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    gap: 10px;
+}
+
+.announcementsbox {
+    background-color: white;
+    border-radius: 8px;
+}
+
+.trendingbox {
+    background-color: white;
+    border-radius: 8px;
+}
+
+.projectsbox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.card {
+    padding: 20px;
+
+    background-color: white;
+    border-radius: 8px;
+    border-left: 6px solid orange;
+
+    display: grid;
+    grid-template-rows: 1fr min-content;
+    gap: 20px;
+}
+
+.cardicons {
+    display: grid;
+    grid-template-columns: repeat(3, min-content);
+    gap: 25px;
+    justify-content: right;
+}
+
+.announcementsbox {
+    padding: 20px;
+    display: grid;
+    gap: 10px;
+}
+
+.trendingbox {
+    padding: 20px;
+    display: grid;
+    gap: 10px;
+}
+
+.persontag {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 10px;
+    align-content: center;
+}
+
+.persontext {
+    align-self: end;
+}
+
+hr {
+    width: 100%;
+    height: 0px;
+    border: 1px solid lightgray;
+}
+
+.mainlogo  {
+    display: grid;
+    grid-template-columns: min-content min-content;
+    align-items: center;
+    gap: 8px;
+}
+
+.menu1 li, .menu2 li {
+    display: grid;
+    grid-template-columns: min-content min-content;
+    align-items: center;
+    gap: 8px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+input {
+    border-radius: 10px;
+    background-color: #E2E8F0;
+    border: none;
+    padding: 5px 12px;
+    width: 80%;
+}
+
+.card, .announcementsbox, .trendingbox {
+    box-shadow: 0px 3px 10px lightgray;
+}
+
+.cardtext p {
+    font-size: 0.9em;
+}
+
+.cardtext h3 {
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+.anntext p {
+    font-size: 0.8em;
+}
+
+.anntext h3 {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.persontext {
+    color: gray;
+}
+
+.persontext p {
+    font-size: 0.8em;
+    margin-top: 3px;
+}
