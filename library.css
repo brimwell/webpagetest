@@ -1,0 +1,199 @@
+* {
+    box-sizing: border-box;
+    font-family: Roboto, Arial, serif;
+}
+
+body {
+     margin: 0;
+    font-size: 16px;
+    background-color: antiquewhite;
+}
+
+h1, h2, h3, p, ul, li, blockquote {
+    margin: 0;
+}
+
+/* CARD STYLING */
+
+.librarycontainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 10px;
+    justify-content: center;
+}
+
+.card {
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px lightgray;
+    padding: 15px;
+
+    width: 300px;
+
+    display: grid;
+    grid-template-rows: min-content min-content min-content 1fr;
+}
+
+.card h2 {
+
+}
+
+.author {
+    margin-top: 0.5em;
+}
+
+.year {
+    margin-bottom: 0.5em;
+}
+
+.read {
+    border-left: 10px solid green;
+}
+
+.unread {
+    border-left: 10px solid red;
+}
+
+.card button {
+    padding: 3px 5px;
+    border-radius: 3px;
+    border: 1px solid black;
+}
+
+.btncontainer {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.removebtn {
+
+}
+
+.readtoggle {
+
+}
+
+/* HEADER STYLING */
+.header {
+    background-color: #202A37;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    height: 7em;
+}
+
+/* Library Top STYLING */
+
+.librarytop {
+    margin: 25px 0 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#addnewbook {
+    padding: 1em 2em;
+    border-radius: 10px;
+    border: 1px solid #202A37;
+    
+}
+
+#addnewbook:hover {
+    background-color: lightgray;
+}
+
+/* ADD BOOK FORM STYLING */
+
+form {
+    margin: 15px;
+
+    width: auto;
+}
+
+fieldset {
+    padding: 15px 25px;
+}
+
+form li {
+    list-style-type: none;
+    margin-left: -1em;
+}
+
+form > fieldset > ul > li {
+    margin-bottom: 0.75em;
+}
+
+li > ul {
+    margin-top: 0.5em;
+}
+
+li > ul > li {
+    margin-bottom: 0.4em;
+}
+
+input {
+    border-color: lightgray;
+}
+
+input[type='text'] {
+    width: 300px;
+}
+
+/* MODAL FUNCTIONALITY */
+.modal {
+    display: none;
+    
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalinnerbox {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.errorbox {
+    text-align: center;
+    width: 50%;
+    
+    margin: 15px auto;
+    color: red;
+}
+
+/* FOOTER STYLING */
+
+.footer {
+    background-color: #202A37;
+    height: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

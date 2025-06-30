@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrimwellJones</title>
+    <link rel="stylesheet" href="library.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="scripts/library.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <h1>The Book Library</h1>
+    </div>
+
+    <div class="main">
+        <div class="librarytop">
+            <button id="addnewbook">Add a New Book</button>
+        </div>
+
+        <div class="librarycontainer">
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><a href="index.html">Back to Home</a></p>
+    </div>
+
+
+
+    
+    
+
+
+<!-- FORM For Adding a New Book -->
+ <div class="modal">
+    <form action="" class="modalinnerbox">
+        <fieldset>
+            <legend>Fill Out the Following</legend>
+
+            <ul>
+                <li>
+                    <label for="booktitle">Title: </label>
+                    <input type="text" id="booktitle" name="booktitle" required>
+                </li>
+                <li>
+                    <label for="bookauthor">Author: </label>
+                    <input type="text" id="bookauthor" name="bookauthor" required>
+                </li>
+                <li>
+                    <label for="bookyear">Year Published: </label>
+                    <input type="tel" id="bookyear" name="bookyear" pattern="/^\d{4}$/" required>
+                </li>
+                <li>
+                    Have you read this book?
+                    <ul>
+                        <li>
+                            <input type="radio" name="haveread" id="yesread" value="true">
+                            <label for="yesread">Yes</label>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <button id="formbtn">Add the book!</button>
+        </fieldset>
+
+        
+    </form>
+</div>
+
+
+
+
+</body>
