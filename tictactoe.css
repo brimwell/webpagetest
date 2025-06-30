@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+    font-family: Roboto, Arial, serif;
+}
+
+body {
+     margin: 0;
+    font-size: 16px;
+}
+
+h1, h2, h3, p, ul, li, blockquote {
+    margin: 0;
+}
