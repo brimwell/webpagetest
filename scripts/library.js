@@ -96,6 +96,26 @@ addBookBtn.addEventListener('click', function() {
     errorBox.appendChild(errorMessage);
     fieldSet.appendChild(errorBox);
 
+const formCancelBtn = document.querySelector('#cancelbtn'); 
+formCancelBtn.addEventListener('click', function() {
+    event.preventDefault();
+
+    // Some repeat of things in inputBookBtn - may need to fix in future
+
+    let newTitle = document.querySelector('#booktitle');
+    let newAuthor = document.querySelector('#bookauthor');
+    let newYear = document.querySelector('#bookyear');
+    let readRadio = document.querySelector('#yesread');
+
+    newTitle.value = '';
+    newAuthor.value = '';
+    newYear.value = '';
+    readRadio.checked = false;
+
+    addBookModal.style.display = 'none';
+
+})   
+
 const inputBookBtn = document.querySelector('#formbtn');
 inputBookBtn.addEventListener('click', function() {
     event.preventDefault();
