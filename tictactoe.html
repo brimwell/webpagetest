@@ -11,13 +11,46 @@
     <script src="scripts/tictactoe.js" defer></script>
 </head>
 <body>
+    <div class="header">
+        <h1>The Tic-Tac-Toe Game</h1>
+    </div>
 
+    <div class="gamecontainer">
+        <div class="gameinfo">
+
+        </div>
+
+
+        <div class="gameboard">
+
+        </div>
+    </div>
 
 
 
     
     <div class="footer">
         <p><a href="index.html">Back to Home</a></p>
+    </div>
+
+    <div class="modal">
+        <form action="" class="modalinnerbox">
+            <fieldset>
+                <legend>Please enter the player's names</legend>
+                <ul>
+                    <li>
+                        <label for="playerOne">Player One's Name (X):</label>
+                        <input type="text" id="playerOne" name="playerOne">
+                    </li>
+                    <li>
+                        <label for="playerTwo">Player Two's Name (O):</label>
+                        <input type="text" id="playerTwo" name="playerTwo">
+                    </li>
+                </ul>
+                <button id="gatherNamesBtn">Let's Start!</button>
+            </fieldset>
+
+        </form>
     </div>
 
 
