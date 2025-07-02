@@ -1,11 +1,14 @@
 const myLibrary = [];
 
-function Book(title, author, yearWritten, read) {
-    this.title = title;
-    this.author = author;
-    this.yearWritten = yearWritten;
-    this.read = read;
+class Book {
+    constructor(title, author, yearWritten, read) {
+        this.title = title;
+        this.author = author;
+        this.yearWritten = yearWritten;
+        this.read = read;
+    }
 }
+
 
 function addBook(title, author, yearWritten, read) {
     let newBook = new Book(title, author, yearWritten, read);
@@ -194,7 +197,7 @@ function addRemoveButtons() {
     const removeBtns = document.querySelectorAll('.removebtn');
     for (const item of removeBtns) {
         item.addEventListener('click', () => {
-            let chosenId = item.parentElement.dataset.id;
+            let chosenId = item.parentElement.parentElement.dataset.id;
             
             for (let i = 0; i < myLibrary.length; i++) {
                 if (chosenId === myLibrary[i].userID) {
